@@ -1,0 +1,51 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "baselineEntry",
+            "relationshipName": "baselineEntryVersion",
+            "otherEntityName": "baselineEntryVersion",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "baseline",
+            "otherEntityName": "baseline",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "baselineEntry"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "entryName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "creationTime",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "fileName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "blob",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "any"
+        },
+        {
+            "fieldName": "uploadStatus",
+            "fieldType": "UploadStatus",
+            "fieldValues": "NO,OK,ERROR"
+        }
+    ],
+    "changelogDate": "20180304170513",
+    "entityTableName": "baseline_entry",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "angularJSSuffix": "ancSuffix"
+}
