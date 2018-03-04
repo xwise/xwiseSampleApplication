@@ -1,0 +1,32 @@
+
+<div *ngIf="fileEntry">
+    <h2><span>File Entry</span> {{fileEntry.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Entry Name</span></dt>
+        <dd>
+            <span>{{fileEntry.entryName}}</span>
+        </dd>
+        <dt><span>Baseline Entry Version</span></dt>
+        <dd>
+            <span *ngFor="let baselineEntryVersion of fileEntry.baselineEntryVersions; let last = last">
+                <a [routerLink]="['/baseline-entry-version-anc-suffix', baselineEntryVersion?.id ]">{{baselineEntryVersion.version}}</a>{{last ? '' : ', '}}
+            </span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'file-entry-anc-suffix/'+ fileEntry.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

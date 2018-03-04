@@ -1,0 +1,43 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "fileEntry",
+            "otherEntityName": "fileEntry",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "baselineEntryVersion"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "creationTime",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "version",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "fileName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "blob",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "any"
+        },
+        {
+            "fieldName": "uploadStatus",
+            "fieldType": "UploadStatus",
+            "fieldValues": "NO,OK,ERROR"
+        }
+    ],
+    "changelogDate": "20180304201447",
+    "entityTableName": "baseline_entry_version",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "angularJSSuffix": "ancSuffix"
+}
