@@ -1,0 +1,74 @@
+<div>
+    <h2>
+        <span>File Entries</span>
+        <button class="btn btn-primary float-right jh-create-entity create-file-entry-anc-suffix" [routerLink]="['/', { outlets: { popup: ['file-entry-anc-suffix-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span >
+            Create new File Entry
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="fileEntries">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span>ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="creationTime"><span>Creation Time</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="fileName"><span>File Name</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="uploadVersionVersion"><span>Upload Version</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let fileEntry of fileEntries ;trackBy: trackId">
+                <td><a [routerLink]="['../file-entry-anc-suffix', fileEntry.id ]">{{fileEntry.id}}</a></td>
+                <td>{{fileEntry.creationTime | date:'medium'}}</td>
+                <td>{{fileEntry.fileName}}</td>
+                <td>
+                    <div *ngIf="fileEntry.uploadVersionId">
+                        <a [routerLink]="['../upload-version-anc-suffix', fileEntry.uploadVersionId  ]" >{{fileEntry.uploadVersionVersion}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../file-entry-anc-suffix', fileEntry.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'file-entry-anc-suffix/'+ fileEntry.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'file-entry-anc-suffix/'+ fileEntry.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="fileEntries && fileEntries.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>
