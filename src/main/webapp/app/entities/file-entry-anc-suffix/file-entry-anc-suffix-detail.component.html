@@ -1,0 +1,45 @@
+
+<div *ngIf="fileEntry">
+    <h2><span>File Entry</span> {{fileEntry.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Creation Time</span></dt>
+        <dd>
+            <span>{{fileEntry.creationTime | date:'medium'}}</span>
+        </dd>
+        <dt><span>Version</span></dt>
+        <dd>
+            <span>{{fileEntry.version}}</span>
+        </dd>
+        <dt><span>File Name</span></dt>
+        <dd>
+            <span>{{fileEntry.fileName}}</span>
+        </dd>
+        <dt><span>File</span></dt>
+        <dd>
+            <div *ngIf="fileEntry.file">
+                <a (click)="openFile(fileEntry.fileContentType, fileEntry.file)">open</a>
+                {{fileEntry.fileContentType}}, {{byteSize(fileEntry.file)}}
+            </div>
+        </dd>
+        <dt><span>Upload Status</span></dt>
+        <dd>
+            <span>{{fileEntry.uploadStatus}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'file-entry-anc-suffix/'+ fileEntry.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>
