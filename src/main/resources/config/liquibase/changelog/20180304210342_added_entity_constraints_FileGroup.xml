@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity FileGroup.
+    -->
+    <changeSet id="20180304210342-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="file_groups_id"
+                                 baseTableName="file_group_file_entry"
+                                 constraintName="fk_file_group_file_entry_file_groups_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="file_group"/>
+        <addForeignKeyConstraint baseColumnNames="file_entries_id"
+                                 baseTableName="file_group_file_entry"
+                                 constraintName="fk_file_group_file_entry_file_entries_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="file_entry"/>
+        
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,39 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "baseline",
+            "relationshipName": "fileGroup",
+            "otherEntityName": "fileGroup",
+            "otherEntityField": "groupName",
+            "ownerSide": true
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "creationTime",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "baselineName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "milestone",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "BaselineStatus",
+            "fieldValues": "ACTIVE,CLOSED"
+        }
+    ],
+    "changelogDate": "20180304210341",
+    "entityTableName": "baseline",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": true,
+    "angularJSSuffix": "ancSuffix"
+}
