@@ -1,0 +1,33 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "fileGroup",
+            "relationshipName": "fileEntry",
+            "otherEntityName": "fileEntry",
+            "otherEntityField": "fileName",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "baseline",
+            "otherEntityName": "baseline",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "fileGroup"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "groupName",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20180304213753",
+    "entityTableName": "file_group",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": true,
+    "angularJSSuffix": "ancSuffix"
+}
