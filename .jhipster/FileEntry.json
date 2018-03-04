@@ -1,0 +1,33 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "fileEntry",
+            "relationshipName": "baselineEntryVersion",
+            "otherEntityName": "baselineEntryVersion",
+            "otherEntityField": "version",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "baseline",
+            "otherEntityName": "baseline",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "fileEntry"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "entryName",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20180304201446",
+    "entityTableName": "file_entry",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": true,
+    "angularJSSuffix": "ancSuffix"
+}
