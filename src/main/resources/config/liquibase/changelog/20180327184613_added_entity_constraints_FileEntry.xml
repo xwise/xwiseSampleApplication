@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity FileEntry.
+    -->
+    <changeSet id="20180327184613-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="file_entries_id"
+                                 baseTableName="file_entry_upload_version"
+                                 constraintName="fk_file_entry_upload_version_file_entries_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="file_entry"/>
+        <addForeignKeyConstraint baseColumnNames="upload_versions_id"
+                                 baseTableName="file_entry_upload_version"
+                                 constraintName="fk_file_entry_upload_version_upload_versions_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="upload_version"/>
+        
+    </changeSet>
+</databaseChangeLog>
