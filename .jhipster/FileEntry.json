@@ -1,0 +1,34 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "uploadVersion",
+            "otherEntityName": "uploadVersion",
+            "otherEntityRelationshipName": "fileEntry"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "baseline",
+            "otherEntityName": "baseline",
+            "otherEntityField": "baselineName"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "creationTime",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "fileName",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20180327075733",
+    "entityTableName": "file_entry",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": true,
+    "angularJSSuffix": "ancSuffix"
+}
