@@ -1,0 +1,49 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "creationTime",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "attribute1",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "attribute2",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "attribute3",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "attribute4",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "attribute5",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "attribute6",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "attribute7",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20180327193253",
+    "entityTableName": "my_first_component",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": true,
+    "angularJSSuffix": "ancSuffix"
+}
