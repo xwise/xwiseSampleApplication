@@ -1,0 +1,36 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "uploadVersion",
+            "relationshipName": "fileEntry",
+            "otherEntityName": "fileEntry",
+            "otherEntityField": "fileName",
+            "ownerSide": true
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "version",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "file",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "any"
+        },
+        {
+            "fieldName": "uploadStatus",
+            "fieldType": "UploadStatus",
+            "fieldValues": "NO,OK,ERROR"
+        }
+    ],
+    "changelogDate": "20180327182210",
+    "entityTableName": "upload_version",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": true,
+    "angularJSSuffix": "ancSuffix"
+}
