@@ -1,0 +1,57 @@
+entity Baseline {
+    creationTime Instant
+	baselineName String
+    milestone Instant
+	status BaselineStatus
+}
+
+enum BaselineStatus {
+	ACTIVE, CLOSED
+}
+
+entity FileEntry {
+    creationTime Instant
+    fileName String
+}
+
+entity UploadVersion {
+	version String
+    file AnyBlob
+    uploadStatus UploadStatus
+}
+
+enum UploadStatus {
+	NO, OK, ERROR
+}
+
+entity MyFirstComponent {
+    creationTime Instant
+	name String
+    attribute1 String
+    attribute2 String
+    attribute3 String
+    attribute4 String
+    attribute5 String
+    attribute6 String
+    attribute7 String
+}
+
+relationship OneToMany {
+	Baseline{FileEntry(fileName)} to FileEntry{Baseline(baselineName)} 
+}
+
+relationship OneToMany {
+	FileEntry{UploadVersion(version)} to UploadVersion{FileEntry(fileName)}
+}
+
+// Set pagination options
+paginate Baseline, FileEntry with pagination
+
+filter all
+
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl
+// Set an angular suffix
+angularSuffix * with ancSuffix

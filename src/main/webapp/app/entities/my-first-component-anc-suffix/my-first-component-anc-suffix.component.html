@@ -1,0 +1,74 @@
+<div>
+    <h2>
+        <span>My First Components</span>
+        <button class="btn btn-primary float-right jh-create-entity create-my-first-component-anc-suffix" [routerLink]="['/', { outlets: { popup: ['my-first-component-anc-suffix-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span >
+            Create new My First Component
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="myFirstComponents">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Creation Time</span></th>
+            <th><span>Name</span></th>
+            <th><span>Attribute 1</span></th>
+            <th><span>Attribute 2</span></th>
+            <th><span>Attribute 3</span></th>
+            <th><span>Attribute 4</span></th>
+            <th><span>Attribute 5</span></th>
+            <th><span>Attribute 6</span></th>
+            <th><span>Attribute 7</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let myFirstComponent of myFirstComponents ;trackBy: trackId">
+                <td><a [routerLink]="['../my-first-component-anc-suffix', myFirstComponent.id ]">{{myFirstComponent.id}}</a></td>
+                <td>{{myFirstComponent.creationTime | date:'medium'}}</td>
+                <td>{{myFirstComponent.name}}</td>
+                <td>{{myFirstComponent.attribute1}}</td>
+                <td>{{myFirstComponent.attribute2}}</td>
+                <td>{{myFirstComponent.attribute3}}</td>
+                <td>{{myFirstComponent.attribute4}}</td>
+                <td>{{myFirstComponent.attribute5}}</td>
+                <td>{{myFirstComponent.attribute6}}</td>
+                <td>{{myFirstComponent.attribute7}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../my-first-component-anc-suffix', myFirstComponent.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'my-first-component-anc-suffix/'+ myFirstComponent.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'my-first-component-anc-suffix/'+ myFirstComponent.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
