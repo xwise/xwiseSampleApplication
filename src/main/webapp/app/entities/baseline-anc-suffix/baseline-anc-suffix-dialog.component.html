@@ -1,0 +1,57 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myBaselineLabel">Create or edit a Baseline</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!baseline.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="baseline.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_creationTime">Creation Time</label>
+            <div class="d-flex">
+                <input id="field_creationTime" type="datetime-local" class="form-control" name="creationTime" [(ngModel)]="baseline.creationTime"
+                />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_baselineName">Baseline Name</label>
+            <input type="text" class="form-control" name="baselineName" id="field_baselineName"
+                [(ngModel)]="baseline.baselineName" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_milestone">Milestone</label>
+            <div class="d-flex">
+                <input id="field_milestone" type="datetime-local" class="form-control" name="milestone" [(ngModel)]="baseline.milestone"
+                />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_status">Status</label>
+            <select class="form-control" name="status" [(ngModel)]="baseline.status" id="field_status" >
+                <option value="ACTIVE">ACTIVE</option>
+                <option value="CLOSED">CLOSED</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="field_fileEntry">File Entry</label>
+            <select class="form-control" id="field_fileEntry" multiple name="fileEntry" [(ngModel)]="baseline.fileEntries">
+                <option [ngValue]="getSelected(baseline.fileEntries, fileEntryOption)" *ngFor="let fileEntryOption of fileentries; trackBy: trackFileEntryById">{{fileEntryOption.fileNameVersion}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

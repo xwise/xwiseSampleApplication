@@ -1,0 +1,73 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myFileEntryLabel">Create or edit a File Entry</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!fileEntry.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="fileEntry.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_creationTime">Creation Time</label>
+            <div class="d-flex">
+                <input id="field_creationTime" type="datetime-local" class="form-control" name="creationTime" [(ngModel)]="fileEntry.creationTime"
+                />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_fileNameVersion">File Name Version</label>
+            <input type="text" class="form-control" name="fileNameVersion" id="field_fileNameVersion"
+                [(ngModel)]="fileEntry.fileNameVersion" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_fileName">File Name</label>
+            <input type="text" class="form-control" name="fileName" id="field_fileName"
+                [(ngModel)]="fileEntry.fileName" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_version">Version</label>
+            <input type="text" class="form-control" name="version" id="field_version"
+                [(ngModel)]="fileEntry.version" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_file">File</label>
+            <div>
+                <div *ngIf="fileEntry.file" class="form-text text-danger clearfix">
+                    <a class="pull-left" (click)="openFile(fileEntry.fileContentType, fileEntry.file)">open</a><br>
+                    <span class="pull-left">{{fileEntry.fileContentType}}, {{byteSize(fileEntry.file)}}</span>
+                    <button type="button" (click)="fileEntry.file=null;fileEntry.fileContentType=null;"
+                            class="btn btn-secondary btn-xs pull-right">
+                        <span class="fa fa-times"></span>
+                    </button>
+                </div>
+                <input type="file" id="file_file" (change)="setFileData($event, fileEntry, 'file', false)"/>
+            </div>
+            <input type="hidden" class="form-control" name="file" id="field_file"
+                [(ngModel)]="fileEntry.file" />
+            <input type="hidden" class="form-control" name="fileContentType" id="field_fileContentType"
+                [(ngModel)]="fileEntry.fileContentType" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_uploadStatus">Upload Status</label>
+            <select class="form-control" name="uploadStatus" [(ngModel)]="fileEntry.uploadStatus" id="field_uploadStatus" >
+                <option value="NO">NO</option>
+                <option value="OK">OK</option>
+                <option value="ERROR">ERROR</option>
+            </select>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>
