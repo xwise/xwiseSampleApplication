@@ -1,0 +1,72 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myMyFirstComponentLabel">Create or edit a My First Component</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!myFirstComponent.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="myFirstComponent.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_creationTime">Creation Time</label>
+            <div class="d-flex">
+                <input id="field_creationTime" type="datetime-local" class="form-control" name="creationTime" [(ngModel)]="myFirstComponent.creationTime"
+                />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                [(ngModel)]="myFirstComponent.name" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_attribute1">Attribute 1</label>
+            <input type="text" class="form-control" name="attribute1" id="field_attribute1"
+                [(ngModel)]="myFirstComponent.attribute1" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_attribute2">Attribute 2</label>
+            <input type="text" class="form-control" name="attribute2" id="field_attribute2"
+                [(ngModel)]="myFirstComponent.attribute2" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_attribute3">Attribute 3</label>
+            <input type="text" class="form-control" name="attribute3" id="field_attribute3"
+                [(ngModel)]="myFirstComponent.attribute3" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_attribute4">Attribute 4</label>
+            <input type="text" class="form-control" name="attribute4" id="field_attribute4"
+                [(ngModel)]="myFirstComponent.attribute4" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_attribute5">Attribute 5</label>
+            <input type="text" class="form-control" name="attribute5" id="field_attribute5"
+                [(ngModel)]="myFirstComponent.attribute5" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_attribute6">Attribute 6</label>
+            <input type="text" class="form-control" name="attribute6" id="field_attribute6"
+                [(ngModel)]="myFirstComponent.attribute6" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_attribute7">Attribute 7</label>
+            <input type="text" class="form-control" name="attribute7" id="field_attribute7"
+                [(ngModel)]="myFirstComponent.attribute7" />
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>
